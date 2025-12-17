@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>403 | Access Denied</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <h1>403</h1>
+    <h2>Access Denied</h2>
+
+    <p>
+        You do not have permission to access this resource.<br>
+        This request was blocked by <strong>Role-Based Access Control</strong>
+        or <strong>IP-Aware Network Security</strong>.
+    </p>
+
+    <div class="actions">
+        <a href="/dashboard" class="dashboard">Back to Dashboard</a>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>

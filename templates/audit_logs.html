@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Audit Logs | Secure IAM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/audit_logs.css') }}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div>
+        Audit Logs
+        <span>| Admin Security Monitoring</span>
+    </div>
+    <a href="/dashboard">Back to Dashboard</a>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <h2>Security Event History</h2>
+    <p class="subtitle">
+        This page displays authentication attempts and access violations
+        recorded by the IAM system.
+    </p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Event</th>
+                    <th>IP Address</th>
+                    <th>Time (IST)</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for log in logs %}
+                <tr>
+                    <td>{{ log.username }}</td>
+
+                    <!-- Event Badge -->
+                    <td>
+                        {% if log.event_type == "LOGIN_SUCCESS" %}
+                            <span class="badge success">LOGIN SUCCESS</span>
+                        {% elif log.event_type == "LOGIN_FAILED" %}
+                            <span class="badge failed">LOGIN FAILED</span>
+                        {% elif log.event_type == "ACCESS_DENIED" %}
+                            <span class="badge denied">ACCESS DENIED</span>
+                        {% else %}
+                            <span class="badge neutral">{{ log.event_type }}</span>
+                        {% endif %}
+                    </td>
+
+                    <td>{{ log.ip_address }}</td>
+                    <td>
+                        {{ log.timestamp.strftime("%d %b %Y, %I:%M %p") if log.timestamp else "" }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

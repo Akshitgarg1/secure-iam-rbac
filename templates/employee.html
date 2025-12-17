@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Panel | Secure IAM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+<!-- Top Navbar -->
+<div class="navbar">
+    <div>
+        Employee Panel
+        <span>| Role: Employee</span>
+    </div>
+    <a href="/dashboard">Back to Dashboard</a>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <h2>My Access Information</h2>
+
+    <p>
+        This panel provides visibility into your identity and
+        security context within the IAM system.
+    </p>
+
+    <div class="card employee">
+        <h3>Identity & Security Details</h3>
+
+        <p>
+            <strong>Username:</strong> {{ current_user.username }} <br>
+            <strong>Role:</strong> Employee <br>
+            <strong>Last Login IP:</strong> {{ last_login_ip or "N/A" }} <br>
+            <strong>Last Login Time:</strong>
+{{ last_login_time.strftime("%d %b %Y, %I:%M %p") if last_login_time else "First login" }}
+        </p>
+
+        <p style="margin-top:15px;">
+            🔒 Your access is governed by
+            <strong>Role-Based Access Control (RBAC)</strong>.
+            Administrative resources are restricted.
+        </p>
+    </div>
+
+    <div class="note">
+        If you notice suspicious activity, please contact the administrator.
+    </div>
+</div>
+
+</body>
+</html>
