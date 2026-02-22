@@ -126,8 +126,6 @@ All security enforcement is backend-driven.
 
 ## 🖼️ Screenshots
 
-> Place images inside `/screenshots` folder
-
 ### 🔑 Login Page
 ![Login](screenshots/login.png)
 
@@ -256,16 +254,6 @@ http://127.0.0.1:5000/login
 - Audit log filtering & export
 - Dockerized deployment
 - JWT-based authentication mode
-
----
-
-## 🌐 Live Demo (Optional)
-
-If deployed:
-
-```
-https://your-app-name.onrender.com
-```
 
 ---
 
